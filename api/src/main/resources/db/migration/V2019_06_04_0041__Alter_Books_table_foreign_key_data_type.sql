@@ -1,0 +1,1 @@
+ALTER TABLE IF EXISTS books ALTER COLUMN author_id type int;
