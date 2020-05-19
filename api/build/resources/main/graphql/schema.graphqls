@@ -1,12 +1,23 @@
 type Query {
-  bookById(id: ID): Book!
-  authorById(id: ID): Author!
+  bookById(id: ID!): Book
+  authorById(id: ID!): Author
 
-  allAuthors: [Author]!
+  allAuthors: [Author]
 }
 
 type Mutation {
+  createBook(input: CreateBookInput!): CreateBookPayload!
   createAuthor(input: CreateAuthorInput!): CreateAuthorPayload!
+}
+
+input CreateBookInput {
+  name: String!
+  pageCount: Int!
+  authorId: ID!
+}
+
+type CreateBookPayload {
+  book: Book!
 }
 
 input CreateAuthorInput {
@@ -19,14 +30,14 @@ type CreateAuthorPayload {
 }
 
 type Book {
-  id: ID
-  name: String
-  pageCount: Int
-  author: Author
+  id: ID!
+  name: String!
+  pageCount: Int!
+  author: Author!
 }
 
 type Author {
-  id: ID
-  firstName: String
-  lastName: String
+  id: ID!
+  firstName: String!
+  lastName: String!
 }

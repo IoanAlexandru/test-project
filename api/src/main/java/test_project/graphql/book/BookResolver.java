@@ -16,7 +16,7 @@ public class BookResolver implements GraphQLResolver<Book> {
     private DefaultDSLContext dsl;
 
     public Author getAuthor(Book book) {
-        return dsl.select()
+        return dsl.select(AUTHORS.fields())
                 .from(AUTHORS)
                 .innerJoin(BOOKS)
                 .on(BOOKS.AUTHOR_ID.eq(AUTHORS.ID))
